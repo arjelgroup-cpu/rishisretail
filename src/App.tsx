@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Phone, Star, ShoppingBag, Users, Award, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { Analytics, track } from '@vercel/analytics/react';
 import { CountdownTimer } from './components/CountdownTimer';
 import { PhoneForm } from './components/PhoneForm';
 
@@ -371,6 +372,7 @@ function App() {
                     <p className="text-gray-600 text-xs mb-4 leading-relaxed">{store.address}</p>
                     <a 
                       href={`tel:${store.phone}`}
+                      onClick={() => track('store_call', { store: store.name, location: store.address })}
                       className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-4 py-2 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300 font-medium shadow-sm hover:shadow-md text-xs"
                     >
                       <Phone className="w-3 h-3" />
@@ -437,6 +439,7 @@ function App() {
             </div>
             <a 
               href="tel:+917099079777" 
+              onClick={() => track('main_contact_call')}
               className="text-2xl md:text-3xl font-bold text-gray-800 text-center block hover:text-yellow-600 transition-colors"
             >
               +91 70990 79777
@@ -446,16 +449,16 @@ function App() {
           <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-200 shadow-sm">
             <h3 className="text-base md:text-lg font-bold text-gray-800 mb-3 md:mb-4 text-center">Follow Us</h3>
             <div className="flex justify-center space-x-4 md:space-x-6">
-              <a href="https://instagram.com/rishisretail" className="text-gray-600 hover:text-pink-500 transition-colors">
+              <a href="https://instagram.com/rishisretail" onClick={() => track('social_click', { platform: 'instagram' })} className="text-gray-600 hover:text-pink-500 transition-colors">
                 <Instagram className="w-8 h-8 md:w-10 md:h-10" />
               </a>
-              <a href="https://facebook.com/rishisretail" className="text-gray-600 hover:text-blue-500 transition-colors">
+              <a href="https://facebook.com/rishisretail" onClick={() => track('social_click', { platform: 'facebook' })} className="text-gray-600 hover:text-blue-500 transition-colors">
                 <Facebook className="w-8 h-8 md:w-10 md:h-10" />
               </a>
-              <a href="https://youtube.com/@rishisretail" className="text-gray-600 hover:text-red-500 transition-colors">
+              <a href="https://youtube.com/@rishisretail" onClick={() => track('social_click', { platform: 'youtube' })} className="text-gray-600 hover:text-red-500 transition-colors">
                 <Youtube className="w-8 h-8 md:w-10 md:h-10" />
               </a>
-              <a href="https://linkedin.com/company/rishis-retail" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <a href="https://linkedin.com/company/rishis-retail" onClick={() => track('social_click', { platform: 'linkedin' })} className="text-gray-600 hover:text-blue-600 transition-colors">
                 <Linkedin className="w-8 h-8 md:w-10 md:h-10" />
               </a>
             </div>
@@ -475,6 +478,9 @@ function App() {
           © 2025 Rishis Retail. All Rights Reserved. • Offers subject to T&C
         </p>
       </footer>
+      
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 }

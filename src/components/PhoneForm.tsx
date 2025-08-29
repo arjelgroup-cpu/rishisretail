@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, CheckCircle, Loader2 } from 'lucide-react';
+import { track } from '@vercel/analytics/react';
 import { submitPhoneNumber } from '../lib/supabase';
 
 export function PhoneForm() {
@@ -19,6 +20,7 @@ export function PhoneForm() {
     const result = await submitPhoneNumber(phoneNumber);
     
     if (result.success) {
+      track('phone_form_submit', { success: true });
       setIsSubmitted(true);
       // Reset after 8 seconds
       setTimeout(() => {
@@ -26,6 +28,7 @@ export function PhoneForm() {
         setPhoneNumber('');
       }, 8000);
     } else {
+      track('phone_form_submit', { success: false, error: result.error || 'unknown_error' });
       setError(result.error || 'Something went wrong');
     }
     

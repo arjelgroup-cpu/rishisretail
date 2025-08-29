@@ -89,8 +89,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white relative">
-      {/* Subtle yellow accent background */}
+      {/* Subtle polka dot background */}
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-white to-orange-50"></div>
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 1px, transparent 0)`,
+        backgroundSize: '20px 20px'
+      }}></div>
 
       {/* Header - Enhanced with navigation */}
       <header className="relative z-10 pt-4 pb-3">
@@ -176,7 +180,7 @@ function App() {
 
         {/* 3. MAIN CTA - Mobile optimized */}
         <section className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200 shadow-xl">
             <div className="text-center mb-6">
               <div className="flex justify-center mb-4">
                 <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
@@ -241,7 +245,7 @@ function App() {
               { icon: Star, value: "4.8", label: "Rating", color: "from-yellow-500 to-yellow-600" },
               { icon: Award, value: "Trusted", label: "Brand", color: "from-green-500 to-green-600" }
             ].map((stat, index) => (
-              <div key={index} className="bg-white rounded-xl p-4 md:p-6 text-center border border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <div key={index} className="bg-white/95 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center border border-gray-200 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl">
                 <div className={`bg-gradient-to-r ${stat.color} rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 shadow-md`}>
                   <stat.icon className="w-6 h-6 text-white" />
                 </div>
@@ -265,7 +269,7 @@ function App() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {productCategories.map((category, index) => (
-              <div key={index} className="bg-white rounded-xl p-4 text-center border border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <div key={index} className="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-200 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl">
                 <div className="bg-yellow-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
                   <div className="text-2xl md:text-3xl">{category.icon}</div>
                 </div>
@@ -278,7 +282,7 @@ function App() {
 
         {/* 6. TRUST BUILDING - Enhanced with icons */}
         <section className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-xl p-6 md:p-8 border border-gray-200 shadow-lg">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-gray-200 shadow-xl">
             <div className="text-center mb-6">
               <div className="flex justify-center mb-3">
                 <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
@@ -350,7 +354,7 @@ function App() {
               {storeLocations.map((store, index) => (
                 <div 
                   key={index} 
-                  className="bg-white rounded-xl p-4 border border-gray-200 min-w-[280px] max-w-[280px] flex-shrink-0 hover:bg-gray-50 transition-all duration-300 snap-start shadow-sm hover:shadow-md carousel-item"
+                  className="bg-white/95 backdrop-blur-sm rounded-xl p-4 border border-gray-200 min-w-[280px] max-w-[280px] flex-shrink-0 hover:bg-white transition-all duration-300 snap-start shadow-lg hover:shadow-xl carousel-item"
                 >
                   <div className="text-center">
                     <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 shadow-md">
@@ -420,7 +424,7 @@ function App() {
             <p className="text-gray-600 text-sm">Connect with us for expert guidance</p>
           </div>
           
-          <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-200 mb-3 shadow-sm">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-200 mb-3 shadow-lg">
             <div className="flex items-center justify-center space-x-2 mb-3">
               <Phone className="w-5 h-5 text-gray-600" />
               <span className="text-gray-700 font-semibold text-base md:text-lg">Main Contact</span>
@@ -434,7 +438,7 @@ function App() {
             </a>
           </div>
 
-          <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-200 shadow-sm">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-200 shadow-lg">
             <h3 className="text-base md:text-lg font-bold text-gray-800 mb-3 md:mb-4 text-center">Follow Us</h3>
             <div className="flex justify-center space-x-4 md:space-x-6">
               <a href="https://instagram.com/rishisretail" onClick={() => track('social_click', { platform: 'instagram' })} className="text-gray-600 hover:text-pink-500 transition-colors">

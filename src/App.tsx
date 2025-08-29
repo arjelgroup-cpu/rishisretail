@@ -68,7 +68,7 @@ function App() {
 
   const scrollToIndex = (index: number) => {
     if (carouselRef.current) {
-      const cardWidth = 320 + 24; // card width + gap
+      const cardWidth = 280 + 16; // card width + gap
       carouselRef.current.scrollTo({
         left: index * cardWidth,
         behavior: 'smooth'
@@ -80,75 +80,140 @@ function App() {
   const handleScroll = () => {
     if (carouselRef.current) {
       const scrollLeft = carouselRef.current.scrollLeft;
-      const cardWidth = 320 + 24;
+      const cardWidth = 280 + 16;
       const newIndex = Math.round(scrollLeft / cardWidth);
       setActiveIndex(newIndex);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/3 rounded-full blur-xl animate-pulse delay-500"></div>
-      </div>
+    <div className="min-h-screen bg-white relative">
+      {/* Subtle yellow accent background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-white to-orange-50"></div>
 
-      {/* Header - Compact and clean */}
+      {/* Header - Enhanced with navigation */}
       <header className="relative z-10 pt-4 pb-3">
-        <div className="flex flex-col items-center space-y-3">
-          <div className="flex items-center justify-center">
-            <img 
-              src="/rishis transparent.png" 
-              alt="Rishis Retail" 
-              className="h-16 md:h-20 lg:h-24 w-auto object-contain drop-shadow-lg"
-              style={{ maxWidth: '200px' }}
-            />
+        {/* Fake Navigation Bar */}
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-6">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 border border-gray-200 shadow-lg">
+            <div className="flex items-center justify-between">
+                              {/* Logo */}
+                <div className="flex items-center space-x-3">
+                  <img 
+                    src="/rishis transparent.png" 
+                    alt="Rishis Retail" 
+                    className="h-10 md:h-12 w-auto object-contain drop-shadow-lg"
+                    style={{ maxWidth: '140px' }}
+                  />
+                  <div className="hidden md:block">
+                    <div className="text-gray-800 font-bold text-sm">Rishis Retail</div>
+                    <div className="text-gray-600 text-xs">Electronics & Appliances</div>
+                  </div>
+                </div>
+              
+              {/* Navigation Links */}
+              <div className="hidden md:flex items-center space-x-6">
+                <a href="#products" className="text-gray-600 hover:text-yellow-600 transition-colors text-sm font-medium">Products</a>
+                <a href="#stores" className="text-gray-600 hover:text-yellow-600 transition-colors text-sm font-medium">Stores</a>
+                <a href="#offers" className="text-gray-600 hover:text-yellow-600 transition-colors text-sm font-medium">Offers</a>
+                <a href="#contact" className="text-gray-600 hover:text-yellow-600 transition-colors text-sm font-medium">Contact</a>
+              </div>
+              
+              {/* Contact Info */}
+              <div className="flex items-center space-x-3">
+                <div className="hidden lg:flex items-center space-x-2 bg-gray-100 rounded-full px-3 py-1.5">
+                  <Phone className="w-3 h-3 text-gray-600" />
+                  <span className="text-gray-700 text-xs font-medium">+91 70990 79777</span>
+                </div>
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-md">
+                  SALE ON!
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5">
-            <span className="text-white font-medium text-xs md:text-sm">
-              9 Stores Across Assam • Since 2014
+        </div>
+        
+        {/* Main Logo Section */}
+        <div className="flex flex-col items-center space-y-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 border border-gray-200 shadow-sm">
+            <span className="text-gray-700 font-medium text-sm md:text-base">
+              9 Stores Across Assam • Premium Electronics & Appliances
             </span>
           </div>
         </div>
       </header>
 
       {/* Main Content - Mobile optimized */}
-      <main className="relative z-10 px-3 pb-4 space-y-8">
+      <main className="relative z-10 px-4 md:px-6 lg:px-8 pb-6 space-y-8 md:space-y-12 lg:space-y-16">
         
         {/* 1. HERO - Mobile friendly */}
-        <section className="text-center pt-2">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 md:mb-6 drop-shadow-lg leading-tight">
+        <section id="offers" className="text-center pt-2 max-w-6xl mx-auto">
+          <div className="relative mb-6">
+            <div className="grid grid-cols-3 gap-3 md:gap-4 max-w-md mx-auto mb-6">
+              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-200 shadow-sm">
+                <div className="text-2xl md:text-3xl mb-2">📺</div>
+                <div className="text-gray-700 text-xs font-medium">Smart TVs</div>
+              </div>
+              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-200 shadow-sm">
+                <div className="text-2xl md:text-3xl mb-2">❄️</div>
+                <div className="text-gray-700 text-xs font-medium">ACs & Fridges</div>
+              </div>
+              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-200 shadow-sm">
+                <div className="text-2xl md:text-3xl mb-2">💻</div>
+                <div className="text-gray-700 text-xs font-medium">Laptops</div>
+              </div>
+            </div>
+          </div>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-4 md:mb-6 leading-tight">
             AUGUST-END
             <br />
-            <span className="text-yellow-300">MEGA DHAMAKA</span>
+            <span className="text-yellow-600">MEGA DHAMAKA</span>
           </h1>
-          <div className="bg-red-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-2xl font-bold shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-300 inline-block animate-urgent-pulse">
+          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-2xl font-bold shadow-lg inline-block">
             UP TO 40% OFF
           </div>
         </section>
 
         {/* 2. URGENCY - Prominent countdown */}
-        <section className="max-w-3xl mx-auto">
+        <section className="max-w-4xl mx-auto">
           <CountdownTimer />
         </section>
 
         {/* 3. MAIN CTA - Mobile optimized */}
-        <section className="max-w-lg mx-auto">
-          <div className="bg-white/25 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/30 shadow-xl">
+        <section className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg">
             <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">🏪 Visit Your Nearest Store</h2>
-              <p className="text-white/95 text-base md:text-lg mb-4">Get up to 40% OFF on all electronics & home appliances</p>
-              <p className="text-white/90 text-sm md:text-base mb-6">Walk into any Rishis Retail outlet and claim your exclusive August-end savings!</p>
+              <div className="flex justify-center mb-4">
+                <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
+                  <div className="text-3xl">🏪</div>
+                </div>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Visit Your Nearest Store</h2>
+              <p className="text-gray-700 text-base md:text-lg mb-4">Get up to 40% OFF on all electronics & home appliances</p>
+              <p className="text-gray-600 text-sm md:text-base mb-6">Walk into any Rishis Retail outlet and claim your exclusive August-end savings!</p>
               
-              {/* Product categories - compact */}
-              <div className="flex flex-wrap justify-center gap-2 mb-6">
-                <span className="bg-white/20 px-2 py-1 rounded-full text-white text-xs font-medium">📺 TVs</span>
-                <span className="bg-white/20 px-2 py-1 rounded-full text-white text-xs font-medium">❄️ ACs</span>
-                <span className="bg-white/20 px-2 py-1 rounded-full text-white text-xs font-medium">📱 Mobiles</span>
-                <span className="bg-white/20 px-2 py-1 rounded-full text-white text-xs font-medium">💻 Laptops</span>
-                <span className="bg-white/20 px-2 py-1 rounded-full text-white text-xs font-medium">🎮 Gaming</span>
+              {/* Product categories - enhanced with icons */}
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                  <div className="text-lg mb-1">📺</div>
+                  <div className="text-gray-700 text-xs font-medium">Smart TVs</div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                  <div className="text-lg mb-1">❄️</div>
+                  <div className="text-gray-700 text-xs font-medium">ACs & Fridges</div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                  <div className="text-lg mb-1">📱</div>
+                  <div className="text-gray-700 text-xs font-medium">Mobiles</div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                  <div className="text-lg mb-1">💻</div>
+                  <div className="text-gray-700 text-xs font-medium">Laptops</div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 text-center">
+                  <div className="text-lg mb-1">🎮</div>
+                  <div className="text-gray-700 text-xs font-medium">Gaming</div>
+                </div>
               </div>
             </div>
             
@@ -164,97 +229,149 @@ function App() {
           </div>
         </section>
 
-        {/* 4. SOCIAL PROOF - Compact mobile */}
-        <section className="max-w-2xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+        {/* 4. SOCIAL PROOF - Enhanced with better visuals */}
+        <section className="max-w-5xl mx-auto">
+          <div className="text-center mb-6">
+            <div className="flex justify-center mb-3">
+              <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
+                <div className="text-lg">🏆</div>
+              </div>
+            </div>
+            <h3 className="text-lg font-bold text-gray-800">Why Customers Trust Us</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
-              { icon: Users, value: "9", label: "Stores" },
-              { icon: Award, value: "11", label: "Years" },
-              { icon: ShoppingBag, value: "1000+", label: "Products" },
-              { icon: Star, value: "4.8", label: "Rating" }
+              { icon: Users, value: "9", label: "Stores", color: "from-blue-500 to-blue-600" },
+              { icon: Award, value: "11", label: "Years", color: "from-green-500 to-green-600" },
+              { icon: ShoppingBag, value: "1000+", label: "Products", color: "from-purple-500 to-purple-600" },
+              { icon: Star, value: "4.8", label: "Rating", color: "from-yellow-500 to-yellow-600" }
             ].map((stat, index) => (
-              <div key={index} className="bg-white/15 backdrop-blur-sm rounded-lg p-2 md:p-3 text-center border border-white/20">
-                <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-white mx-auto mb-1" />
-                <div className="text-lg md:text-xl font-bold text-white">{stat.value}</div>
-                <div className="text-xs text-white/80">{stat.label}</div>
+              <div key={index} className="bg-white rounded-xl p-4 md:p-6 text-center border border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+                <div className={`bg-gradient-to-r ${stat.color} rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 shadow-md`}>
+                  <stat.icon className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-xl md:text-2xl font-bold text-gray-800">{stat.value}</div>
+                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* 5. PRODUCT INTEREST - Mobile compact */}
-        <section className="max-w-3xl mx-auto">
-          <h2 className="text-xl md:text-2xl font-bold text-white text-center mb-4">🛍️ What We Offer</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {/* 5. PRODUCT INTEREST - Enhanced with better visuals */}
+        <section id="products" className="max-w-6xl mx-auto">
+          <div className="text-center mb-6">
+            <div className="flex justify-center mb-3">
+              <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
+                <div className="text-2xl">🛍️</div>
+              </div>
+            </div>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">What We Offer</h2>
+            <p className="text-gray-600 text-sm">Premium electronics and home appliances at unbeatable prices</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {productCategories.map((category, index) => (
-              <div key={index} className="bg-white/15 backdrop-blur-sm rounded-lg p-3 text-center border border-white/20 hover:bg-white/25 transition-all duration-300 hover:scale-105">
-                <div className="text-2xl md:text-3xl mb-1 md:mb-2">{category.icon}</div>
-                <div className="text-white font-semibold text-xs md:text-sm">{category.name}</div>
+              <div key={index} className="bg-white rounded-xl p-4 text-center border border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+                <div className="bg-yellow-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                  <div className="text-2xl md:text-3xl">{category.icon}</div>
+                </div>
+                <div className="text-gray-800 font-semibold text-sm md:text-base">{category.name}</div>
+                <div className="text-yellow-600 text-xs mt-1 font-medium">Up to 40% OFF</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* 6. TRUST BUILDING - Mobile compact */}
-        <section className="max-w-2xl mx-auto">
-          <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20">
-            <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 text-center">✨ Why Choose Rishis Retail?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-sm">✓</div>
-                <span className="text-white text-sm md:text-base">11+ Years of Trust</span>
+        {/* 6. TRUST BUILDING - Enhanced with icons */}
+        <section className="max-w-5xl mx-auto">
+          <div className="bg-white rounded-xl p-6 md:p-8 border border-gray-200 shadow-lg">
+            <div className="text-center mb-6">
+              <div className="flex justify-center mb-3">
+                <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
+                  <div className="text-2xl">✨</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-sm">✓</div>
-                <span className="text-white text-sm md:text-base">9 Stores Across Assam</span>
+              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">Why Choose Rishis Retail?</h3>
+              <p className="text-gray-600 text-sm">Your trusted partner for premium electronics</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
+                <div>
+                  <span className="text-gray-800 text-sm md:text-base font-semibold">11+ Years of Trust</span>
+                  <div className="text-gray-600 text-xs">Established reliability</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-sm">✓</div>
-                <span className="text-white text-sm md:text-base">Easy EMI Options</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
+                <div>
+                  <span className="text-gray-800 text-sm md:text-base font-semibold">9 Stores Across Assam</span>
+                  <div className="text-gray-600 text-xs">Wide network coverage</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-sm">✓</div>
-                <span className="text-white text-sm md:text-base">Exchange Programs</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
+                <div>
+                  <span className="text-gray-800 text-sm md:text-base font-semibold">Easy EMI Options</span>
+                  <div className="text-gray-600 text-xs">Flexible payment plans</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-sm">✓</div>
-                <span className="text-white text-sm md:text-base">Genuine Products</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
+                <div>
+                  <span className="text-gray-800 text-sm md:text-base font-semibold">Exchange Programs</span>
+                  <div className="text-gray-600 text-xs">Trade-in your old devices</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-sm">✓</div>
-                <span className="text-white text-sm md:text-base">After-Sales Support</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
+                <div>
+                  <span className="text-gray-800 text-sm md:text-base font-semibold">Genuine Products</span>
+                  <div className="text-gray-600 text-xs">100% authentic brands</div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
+                <div>
+                  <span className="text-gray-800 text-sm md:text-base font-semibold">After-Sales Support</span>
+                  <div className="text-gray-600 text-xs">Comprehensive service</div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 7. LOCATION ACCESS - Mobile optimized */}
-        <section className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-3">📍 Your Nearest Rishis Store</h2>
-          <p className="text-white/90 text-sm md:text-base text-center mb-6">Choose your location and visit for the best deals on electronics!</p>
-          <div className="relative">
-            <div 
-              ref={carouselRef}
-              onScroll={handleScroll}
-              className="flex overflow-x-auto gap-3 pb-3 scrollbar-hide snap-x snap-mandatory cursor-grab active:cursor-grabbing"
-            >
+        {/* 7. LOCATION ACCESS - Enhanced with icons */}
+        <section id="stores" className="max-w-7xl mx-auto">
+          <div className="text-center mb-6">
+            <div className="flex justify-center mb-3">
+              <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
+                <div className="text-2xl">📍</div>
+              </div>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Your Nearest Rishis Store</h2>
+            <p className="text-gray-600 text-sm md:text-base">Choose your location and visit for the best deals on electronics!</p>
+          </div>
+                      <div className="relative">
+              <div 
+                ref={carouselRef}
+                onScroll={handleScroll}
+                className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide snap-x snap-mandatory cursor-grab active:cursor-grabbing carousel-container"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
               {storeLocations.map((store, index) => (
                 <div 
                   key={index} 
-                  className="bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20 min-w-[260px] max-w-[260px] flex-shrink-0 hover:bg-white/25 transition-all duration-300 snap-start shadow-lg"
+                  className="bg-white rounded-xl p-4 border border-gray-200 min-w-[280px] max-w-[280px] flex-shrink-0 hover:bg-gray-50 transition-all duration-300 snap-start shadow-sm hover:shadow-md carousel-item"
                 >
                   <div className="text-center">
-                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <span className="text-lg">🏪</span>
+                    <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 shadow-md">
+                      <span className="text-xl">🏪</span>
                     </div>
-                    <h3 className="text-base font-bold text-white mb-2">{store.name}</h3>
-                    <p className="text-white/80 text-xs mb-2 leading-relaxed">{store.address}</p>
-                    <div className="bg-white/20 rounded p-1.5 mb-3">
-                      <p className="text-white/90 text-xs font-medium">🎉 40% OFF Available Here!</p>
-                    </div>
+                    <h3 className="text-base font-bold text-gray-800 mb-2">{store.name}</h3>
+                    <p className="text-gray-600 text-xs mb-4 leading-relaxed">{store.address}</p>
                     <a 
                       href={`tel:${store.phone}`}
-                      className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-3 py-2 rounded flex items-center justify-center space-x-2 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 text-xs"
+                      className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-4 py-2 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300 font-medium shadow-sm hover:shadow-md text-xs"
                     >
                       <Phone className="w-3 h-3" />
                       <span className="font-semibold">Call Store</span>
@@ -264,51 +381,81 @@ function App() {
               ))}
             </div>
             
-            {/* Smaller scroll indicators */}
-            <div className="flex justify-center mt-3 space-x-1">
+            {/* Scroll indicators */}
+            <div className="flex justify-center mt-4 space-x-2">
               {storeLocations.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 hover:bg-white/60 cursor-pointer ${
-                    activeIndex === index ? 'bg-white' : 'bg-white/30'
+                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:bg-yellow-400 cursor-pointer ${
+                    activeIndex === index ? 'bg-yellow-500' : 'bg-gray-300'
                   }`}
                 />
               ))}
             </div>
+            
+            {/* Desktop navigation arrows */}
+            <div className="hidden md:flex absolute inset-y-0 left-0 right-0 pointer-events-none">
+              <button
+                onClick={() => scrollToIndex(Math.max(0, activeIndex - 1))}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg pointer-events-auto transition-all duration-300"
+                disabled={activeIndex === 0}
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => scrollToIndex(Math.min(storeLocations.length - 1, activeIndex + 1))}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg pointer-events-auto transition-all duration-300"
+                disabled={activeIndex === storeLocations.length - 1}
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </section>
 
-        {/* 8. CONTACT - Mobile compact */}
-        <section className="max-w-lg mx-auto">
-          <h2 className="text-xl md:text-2xl font-bold text-white text-center mb-4">📞 Get In Touch</h2>
+        {/* 8. CONTACT - Enhanced with icons */}
+        <section id="contact" className="max-w-2xl mx-auto">
+          <div className="text-center mb-6">
+            <div className="flex justify-center mb-3">
+              <div className="bg-yellow-100 rounded-full p-3 border border-yellow-200">
+                <div className="text-2xl">📞</div>
+              </div>
+            </div>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Get In Touch</h2>
+            <p className="text-gray-600 text-sm">Connect with us for expert guidance</p>
+          </div>
           
-          <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20 mb-3">
+          <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-200 mb-3 shadow-sm">
             <div className="flex items-center justify-center space-x-2 mb-3">
-              <Phone className="w-5 h-5 text-white" />
-              <span className="text-white font-semibold text-base md:text-lg">Main Contact</span>
+              <Phone className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-700 font-semibold text-base md:text-lg">Main Contact</span>
             </div>
             <a 
               href="tel:+917099079777" 
-              className="text-2xl md:text-3xl font-bold text-white text-center block hover:text-yellow-300 transition-colors"
+              className="text-2xl md:text-3xl font-bold text-gray-800 text-center block hover:text-yellow-600 transition-colors"
             >
               +91 70990 79777
             </a>
           </div>
 
-          <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20">
-            <h3 className="text-base md:text-lg font-bold text-white mb-3 md:mb-4 text-center">Follow Us</h3>
+          <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-200 shadow-sm">
+            <h3 className="text-base md:text-lg font-bold text-gray-800 mb-3 md:mb-4 text-center">Follow Us</h3>
             <div className="flex justify-center space-x-4 md:space-x-6">
-              <a href="https://instagram.com/rishisretail" className="text-white hover:text-pink-400 transition-colors">
+              <a href="https://instagram.com/rishisretail" className="text-gray-600 hover:text-pink-500 transition-colors">
                 <Instagram className="w-8 h-8 md:w-10 md:h-10" />
               </a>
-              <a href="https://facebook.com/rishisretail" className="text-white hover:text-blue-400 transition-colors">
+              <a href="https://facebook.com/rishisretail" className="text-gray-600 hover:text-blue-500 transition-colors">
                 <Facebook className="w-8 h-8 md:w-10 md:h-10" />
               </a>
-              <a href="https://youtube.com/@rishisretail" className="text-white hover:text-red-400 transition-colors">
+              <a href="https://youtube.com/@rishisretail" className="text-gray-600 hover:text-red-500 transition-colors">
                 <Youtube className="w-8 h-8 md:w-10 md:h-10" />
               </a>
-              <a href="https://linkedin.com/company/rishis-retail" className="text-white hover:text-blue-600 transition-colors">
+              <a href="https://linkedin.com/company/rishis-retail" className="text-gray-600 hover:text-blue-600 transition-colors">
                 <Linkedin className="w-8 h-8 md:w-10 md:h-10" />
               </a>
             </div>
@@ -317,14 +464,14 @@ function App() {
       </main>
 
       {/* Footer - Minimal */}
-      <footer className="relative z-10 text-center py-2 mt-4">
-        <div className="flex items-center justify-center space-x-2 mb-1">
-          <Phone className="w-3 h-3 text-white" />
-          <a href="tel:+917099079777" className="text-white font-medium text-xs hover:text-yellow-300 transition-colors">
+      <footer className="relative z-10 text-center py-4 mt-8 border-t border-gray-200">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <Phone className="w-3 h-3 text-gray-600" />
+          <a href="tel:+917099079777" className="text-gray-700 font-medium text-xs hover:text-yellow-600 transition-colors">
             +91 70990 79777
           </a>
         </div>
-        <p className="text-white/70 text-xs">
+        <p className="text-gray-500 text-xs">
           © 2025 Rishis Retail. All Rights Reserved. • Offers subject to T&C
         </p>
       </footer>

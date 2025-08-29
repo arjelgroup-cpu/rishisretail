@@ -34,23 +34,27 @@ export function CountdownTimer() {
   }, []);
 
   return (
-    <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-      <div className="flex items-center justify-center space-x-2 mb-4">
-        <Clock className="w-5 h-5 text-white animate-pulse" />
-        <span className="text-white font-semibold text-lg">Offer Ends In:</span>
+    <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+      <div className="flex items-center justify-center space-x-3 mb-6">
+        <div className="bg-yellow-100 rounded-full p-2 border border-yellow-200">
+          <Clock className="w-5 h-5 text-yellow-600" />
+        </div>
+        <span className="text-gray-800 font-semibold text-lg">Offer Ends In:</span>
       </div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         {[
-          { value: timeLeft.days, label: 'DAYS' },
-          { value: timeLeft.hours, label: 'HOURS' },
-          { value: timeLeft.minutes, label: 'MINS' },
-          { value: timeLeft.seconds, label: 'SECS' }
+          { value: timeLeft.days, label: 'DAYS', color: 'from-red-500 to-red-600' },
+          { value: timeLeft.hours, label: 'HOURS', color: 'from-orange-500 to-orange-600' },
+          { value: timeLeft.minutes, label: 'MINS', color: 'from-yellow-500 to-yellow-600' },
+          { value: timeLeft.seconds, label: 'SECS', color: 'from-green-500 to-green-600' }
         ].map((item, index) => (
-          <div key={index} className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-            <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">
-              {item.value.toString().padStart(2, '0')}
+          <div key={index} className="bg-gray-50 rounded-xl p-3 md:p-4 text-center border border-gray-200 hover:bg-gray-100 transition-all duration-300">
+            <div className={`bg-gradient-to-r ${item.color} rounded-lg p-2 mb-2`}>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-white tabular-nums">
+                {item.value.toString().padStart(2, '0')}
+              </div>
             </div>
-            <div className="text-xs text-white/80 font-medium mt-1">{item.label}</div>
+            <div className="text-xs md:text-sm text-gray-600 font-medium">{item.label}</div>
           </div>
         ))}
       </div>

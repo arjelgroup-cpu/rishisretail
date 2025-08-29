@@ -11,6 +11,23 @@
   display: none;  /* Safari and Chrome */
 }
 
+/* Enhanced carousel scrolling */
+.carousel-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Desktop carousel improvements */
+@media (min-width: 768px) {
+  .carousel-container {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .carousel-item {
+    scroll-snap-align: start;
+  }
+}
+
 /* Smooth scrolling for carousel */
 .scrollbar-hide {
   scroll-behavior: smooth;
@@ -46,6 +63,7 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
@@ -74,6 +92,12 @@ input:focus {
 /* Button hover effects */
 button:hover:not(:disabled) {
   box-shadow: 0 20px 40px rgba(239, 68, 68, 0.3);
+}
+
+/* Navigation link hover effects */
+a[href^="#"]:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 /* Smooth animations */
@@ -126,4 +150,20 @@ button:hover:not(:disabled) {
 
 .animate-urgent-pulse {
   animation: urgentPulse 2s infinite;
+}
+
+/* Clean, professional animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
 }

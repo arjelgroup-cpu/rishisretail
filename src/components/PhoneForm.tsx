@@ -8,6 +8,7 @@ export function PhoneForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (phoneNumber.length !== 10) return;
@@ -33,14 +34,14 @@ export function PhoneForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center transform animate-pulse">
-        <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6 animate-bounce" />
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">🎉 Offer Claimed!</h2>
-        <p className="text-lg text-gray-600 mb-6">
-          We'll contact you soon with your exclusive 40% OFF code!
+      <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full text-center transform animate-pulse">
+        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4 animate-bounce" />
+        <h2 className="text-2xl font-bold text-gray-800 mb-3">🎉 Thank You!</h2>
+        <p className="text-sm text-gray-600 mb-4">
+          Our Rishis executives will call you back soon to guide you on your purchase!
         </p>
-        <div className="flex items-center justify-center space-x-2 text-sm text-gray-500">
-          <Phone className="w-4 h-4" />
+        <div className="flex items-center justify-center space-x-2 text-xs text-gray-500">
+          <Phone className="w-3 h-3" />
           <span>+91 70990 79777</span>
         </div>
       </div>
@@ -48,51 +49,51 @@ export function PhoneForm() {
   }
 
   return (
-    <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full">
-      <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">
-          Claim Your 40% OFF Code
+    <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-6 max-w-sm w-full">
+      <div className="text-center mb-4">
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
+          Get Expert Guidance
         </h2>
-        <p className="text-gray-600">
-          Enter your mobile number to get exclusive offers
+        <p className="text-white/80 text-sm">
+          Enter your mobile number and our Rishis executives will call you back to guide you on your purchase
         </p>
       </div>
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3">
         <div className="relative">
-          <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
           <input
             type="tel"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
             placeholder="Enter your mobile number"
-            className="w-full pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-red-500 focus:outline-none transition-all duration-300"
+            className="w-full pl-10 pr-3 py-3 text-base border-2 border-white/30 rounded-xl focus:border-white focus:outline-none transition-all duration-300 bg-white/20 text-white placeholder-white/60"
             required
           />
         </div>
         
         {error && (
-          <p className="text-red-500 text-sm text-center">{error}</p>
+          <p className="text-red-500 text-xs text-center">{error}</p>
         )}
         
         <button
           type="submit"
           disabled={phoneNumber.length !== 10 || isSubmitting}
-          className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold py-4 px-8 rounded-2xl text-lg hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg flex items-center justify-center space-x-2"
+          className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold py-3 px-6 rounded-xl text-base hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg flex items-center justify-center space-x-2"
         >
           {isSubmitting ? (
             <>
-              <Loader2 className="w-5 h-5 animate-spin" />
+              <Loader2 className="w-4 h-4 animate-spin" />
               <span>Claiming...</span>
             </>
           ) : (
-            <span>Get My 40% OFF Code 🎁</span>
+            <span>Get Expert Call Back 📞</span>
           )}
         </button>
       </form>
       
-      <div className="mt-6 text-center">
-        <p className="text-sm text-gray-500">
+      <div className="mt-4 text-center">
+        <p className="text-xs text-white/70">
           ✅ No spam • ✅ Instant offers • ✅ EMI available
         </p>
       </div>

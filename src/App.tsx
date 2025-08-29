@@ -94,23 +94,19 @@ function App() {
 
       {/* Header - Enhanced with navigation */}
       <header className="relative z-10 pt-4 pb-3">
-        {/* Fake Navigation Bar */}
+        {/* Navigation Bar - Mobile optimized */}
         <div className="max-w-7xl mx-auto px-4 md:px-6 mb-6">
           <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
-                              {/* Logo */}
-                <div className="flex items-center space-x-3">
-                  <img 
-                    src="/rishis transparent.png" 
-                    alt="Rishis Retail" 
-                    className="h-10 md:h-12 w-auto object-contain drop-shadow-lg"
-                    style={{ maxWidth: '140px' }}
-                  />
-                  <div className="hidden md:block">
-                    <div className="text-gray-800 font-bold text-sm">Rishis Retail</div>
-                    <div className="text-gray-600 text-xs">Electronics & Appliances</div>
-                  </div>
-                </div>
+              {/* Logo - Mobile optimized */}
+              <div className="flex items-center">
+                <img 
+                  src="/rishis-logo.png" 
+                  alt="Rishis Retail" 
+                  className="h-14 md:h-16 w-auto object-contain drop-shadow-lg"
+                  style={{ maxWidth: '180px' }}
+                />
+              </div>
               
               {/* Navigation Links */}
               <div className="hidden md:flex items-center space-x-6">
@@ -131,15 +127,6 @@ function App() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        
-        {/* Main Logo Section */}
-        <div className="flex flex-col items-center space-y-4">
-          <div className="bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 border border-gray-200 shadow-sm">
-            <span className="text-gray-700 font-medium text-sm md:text-base">
-              9 Stores Across Assam • Premium Electronics & Appliances
-            </span>
           </div>
         </div>
       </header>
@@ -165,13 +152,20 @@ function App() {
               </div>
             </div>
           </div>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-4 md:mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-6 md:mb-8 leading-tight">
             AUGUST-END
             <br />
             <span className="text-yellow-600">MEGA DHAMAKA</span>
           </h1>
-          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-2xl font-bold shadow-lg inline-block">
-            UP TO 40% OFF
+          <div className="flex flex-col items-center space-y-4 mb-6">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 md:px-12 md:py-5 rounded-full text-xl md:text-3xl font-bold shadow-lg">
+              UP TO 40% OFF
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-full px-8 py-3 border border-gray-200 shadow-md">
+              <span className="text-gray-700 font-semibold text-base md:text-lg">
+                9 Stores Across Assam • Premium Electronics & Appliances
+              </span>
+            </div>
           </div>
         </section>
 
@@ -243,9 +237,9 @@ function App() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
               { icon: Users, value: "9", label: "Stores", color: "from-blue-500 to-blue-600" },
-              { icon: Award, value: "11", label: "Years", color: "from-green-500 to-green-600" },
               { icon: ShoppingBag, value: "1000+", label: "Products", color: "from-purple-500 to-purple-600" },
-              { icon: Star, value: "4.8", label: "Rating", color: "from-yellow-500 to-yellow-600" }
+              { icon: Star, value: "4.8", label: "Rating", color: "from-yellow-500 to-yellow-600" },
+              { icon: Award, value: "Trusted", label: "Brand", color: "from-green-500 to-green-600" }
             ].map((stat, index) => (
               <div key={index} className="bg-white rounded-xl p-4 md:p-6 text-center border border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-sm">
                 <div className={`bg-gradient-to-r ${stat.color} rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 shadow-md`}>
@@ -295,13 +289,7 @@ function App() {
               <p className="text-gray-600 text-sm">Your trusted partner for premium electronics</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
-                <div>
-                  <span className="text-gray-800 text-sm md:text-base font-semibold">11+ Years of Trust</span>
-                  <div className="text-gray-600 text-xs">Established reliability</div>
-                </div>
-              </div>
+
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-md">✓</div>
                 <div>
